@@ -19,22 +19,22 @@ else
    echo "$(date "+[ %H:%M:%S ]")  如果手贱删掉清自行创建,并且记得输完路径后回车以下比如你一共有11行路径,就在第11行路径后回车,别回多了,最后应该是12行"
    exit 1
 fi
-zs=$(sed "/^#/d" $SHELL_PATH/lin.prop)
+zs=$(sed "/^#/d" $SHELL_PATH/lin.prop | sed '/^$/d' | sed "s/^/$(date "+[ %H:%M:%S ]")  &/g")
 echo "$(date "+[ %H:%M:%S ]")  精简的路径"
 echo "$zs"
 
 #列出不存在目录
 echo "$(date "+[ %H:%M:%S ]")  以下为不存在的目录,如果以下没有内容就表明都存在"
-rm=$(sed "/^#/d" $SHELL_PATH/lin.prop | while read route;do if [ -s "$PROJECT"'/system'$route ];then echo "通过" > /dev/null ;else echo "$route" ;fi ;done)
+rm=$(sed "/^#/d" $SHELL_PATH/lin.prop | while read route;do if [ ! -s "$PROJECT"'/system'$route ];then echo "$route" ;fi ;done)
 ca=$(cat $SHELL_PATH/lin.prop)
-if [[ `echo ${#rm}` -eq `echo ${#ca}` ]];then 
+if [[ `echo ${rm}` -eq `echo ${ca}` ]];then 
    echo "$(date "+[ %H:%M:%S ]")  精简的目录全部都不存在，停止脚本" && exit 1
 else 
     echo "$rm"
 fi
 
 #输出路径到Magisk-Module的customize.sh
-mag=`while read route;do [[ -s "$PROJECT"'/system'$route ]] && echo $route | sed '/#/'d;done < $SHELL_PATH/lin.prop`
+mag=`while read route;do [[ -s "$PROJECT"'/system'$route ]] && echo $route | sed '/#/'d | sed '/^$/d' ;done < $SHELL_PATH/lin.prop`
 echo 'SKIPUNZIP=0
 'echo "$(date "+[ %H:%M:%S ]")  开始解压精简文件"'
 unzip -o -q $MODPATH/system/system.zip && rm -rf $MODPATH/system/system.zip
