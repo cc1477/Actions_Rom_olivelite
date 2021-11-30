@@ -1,0 +1,55 @@
+#注意事项
+#不需要精简的目录请在路径前加上注释，比如:#/system/data-app
+#记得输完路径后回车以下比如你一共有11行路径,就在第11行路径后回车,别回多了,最后应该是12行
+#MIUI预装目录
+/system/data-app
+#recovery恢复文件
+/system/recovery-from-boot.p
+#Analytics MiUi AD
+/system/app/AnalyticsCore
+#MSA
+/system/app/MSA
+#高通色温调节相关
+/system/system_ext/app/QdcmFF
+#高通色彩测试相关
+/system/system_ext/app/QColor
+#小米商城服务组件
+/system/app/mab
+#ONS
+/system/priv-app/ONS
+#X-Divert设置
+/system/system_ext/app/xdivert
+#SystemHelper
+/system/priv-app/SystemHelper
+#运营商默认应用
+/system/app/CarrierDefaultApp
+#基本互动屏保
+/system/app/BasicDreams
+#系统跟踪
+/system/app/Traceur
+#Bookmark Provider(书签同步)
+/system/app/BookmarkProvider
+#FIDO UAF1.0 ASM
+#FIDO指纹服务相关
+/system/app/FidoAuthen
+/system/app/FidoClient
+#小米有道翻译服务
+/system/app/YouDaoEngine
+#翻译服务
+/system/app/TranslationService
+#CQR
+/system/app/com.miui.qr
+#安全守护服务
+#MIUI默认不启用
+/system/app/MIUIgreenguard
+#智慧生活
+/system/app/HybridAccessory
+#用户字典
+/system/priv-app/UserDictionaryProvider
+#照片屏幕保护程序
+/system/product/app/PhotoTable
+#Android 无障碍套件(talkback)
+/system/product/app/talkback
+#内容中心
+/system/priv-app/NewHome/NewHome.apk
+

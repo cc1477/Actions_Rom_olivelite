@@ -1,0 +1,9 @@
+ota-property-files=metadata:69:316         
+ota-required-cache=0
+ota-type=BLOCK
+post-build=Xiaomi/olivelite/olivelite:10/QKQ1.191014.001/V12.5.1.0.QCPCNXM:user/release-keys
+post-build-incremental=V12.5.1.0.QCPCNXM
+post-sdk-level=29
+post-security-patch-level=2021-07-01
+post-timestamp=1626967584
+pre-device=olivelite

@@ -1,0 +1,41 @@
+getprop("ro.product.device") == "olivelite" || abort("E3004: This package is for \"olivelite\" devices; this is a \"" + getprop("ro.product.device") + "\".");
+ui_print("Target: Xiaomi/olivelite/olivelite:10/QKQ1.191014.001/V12.5.1.0.QCPCNXM:user/release-keys");
+show_progress(0.200000, 10);
+package_extract_file("boot.img", "/dev/block/bootdevice/by-name/boot");
+
+# ---- radio update tasks ----
+
+ui_print("Patching firmware images...");
+package_extract_file("firmware-update/NON-HLOS.bin", "/dev/block/bootdevice/by-name/modem");
+package_extract_file("firmware-update/rpm.mbn", "/dev/block/bootdevice/by-name/rpm");
+package_extract_file("firmware-update/km4.mbn", "/dev/block/bootdevice/by-name/keymaster");
+package_extract_file("firmware-update/tz.mbn", "/dev/block/bootdevice/by-name/tz");
+package_extract_file("firmware-update/emmc_appsboot.mbn", "/dev/block/bootdevice/by-name/aboot");
+package_extract_file("firmware-update/sbl1.mbn", "/dev/block/bootdevice/by-name/sbl1");
+package_extract_file("firmware-update/cmnlib64_30.mbn", "/dev/block/bootdevice/by-name/cmnlib64");
+package_extract_file("firmware-update/adspso.bin", "/dev/block/bootdevice/by-name/dsp");
+package_extract_file("firmware-update/cmnlib_30.mbn", "/dev/block/bootdevice/by-name/cmnlib");
+package_extract_file("firmware-update/devcfg.mbn", "/dev/block/bootdevice/by-name/devcfg");
+package_extract_file("firmware-update/rpm.mbn", "/dev/block/bootdevice/by-name/rpmbak");
+package_extract_file("firmware-update/km4.mbn", "/dev/block/bootdevice/by-name/keymasterbak");
+package_extract_file("firmware-update/tz.mbn", "/dev/block/bootdevice/by-name/tzbak");
+package_extract_file("firmware-update/emmc_appsboot.mbn", "/dev/block/bootdevice/by-name/abootbak");
+package_extract_file("firmware-update/sbl1.mbn", "/dev/block/bootdevice/by-name/sbl1bak");
+package_extract_file("firmware-update/devcfg.mbn", "/dev/block/bootdevice/by-name/devcfgbak");
+show_progress(0.700000, 250);
+ui_print("Patching system image unconditionally...");
+block_image_update("/dev/block/bootdevice/by-name/system", package_extract_file("system.transfer.list"), "system.new.dat.br", "system.patch.dat") ||
+  abort("E1001: Failed to update system image.");
+ui_print("Patching vendor image unconditionally...");
+block_image_update("/dev/block/bootdevice/by-name/vendor", package_extract_file("vendor.transfer.list"), "vendor.new.dat.br", "vendor.patch.dat") ||
+  abort("E2001: Failed to update vendor image.");
+show_progress(0.100000, 2);
+
+# ---- radio update tasks 2 ----
+
+ui_print("Patching vbmeta dtbo logo binimages...");
+package_extract_file("firmware-update/splash.img", "/dev/block/bootdevice/by-name/splash");
+package_extract_file("firmware-update/dtbo.img", "/dev/block/bootdevice/by-name/dtbo");
+package_extract_file("firmware-update/mdtp.img", "/dev/block/bootdevice/by-name/mdtp");
+package_extract_file("firmware-update/vbmeta.img", "/dev/block/bootdevice/by-name/vbmeta");
+set_progress(1.000000);
