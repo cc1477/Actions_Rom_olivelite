@@ -35,7 +35,7 @@ e2fsck -fy $n/system.img > /dev/null 2>&1
 resize2fs -f $n/system.img 4096m > /dev/null 2>&1
 echo "$(date "+[ %H:%M:%S ]")  调整vendor大小"      
 e2fsck -fy $n/vendor.img > /dev/null 2>&1
-resize2fs -f $n/vendor.img 2048m > /dev/null 2>&1
+resize2fs -f $n/vendor.img 1024m > /dev/null 2>&1
 #解img
 echo "$(date "+[ %H:%M:%S ]")  分解system.img" && python3 $bin/imgextractor/imgextractor.py $n/system.img $n > /dev/null && rm -rf ${n}/system.img
 echo "$(date "+[ %H:%M:%S ]")  分解vendor.img" && python3 $bin/imgextractor/imgextractor.py $n/vendor.img $n > /dev/null && rm -rf ${n}/vendor.img
