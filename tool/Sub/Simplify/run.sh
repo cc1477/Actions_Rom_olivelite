@@ -23,16 +23,6 @@ zs=$(sed "/^#/d" $SHELL_PATH/lin.prop | sed '/^$/d' | sed "s/^/$(date "+[ %H:%M:
 echo "$(date "+[ %H:%M:%S ]")  精简的路径"
 echo "$zs"
 
-#列出不存在目录
-echo "$(date "+[ %H:%M:%S ]")  以下为不存在的目录,如果以下没有内容就表明都存在"
-rm=$(sed "/^#/d" $SHELL_PATH/lin.prop | while read route;do if [ ! -s "$PROJECT"'/system'$route ];then echo "$route" ;fi ;done)
-ca=$(cat $SHELL_PATH/lin.prop)
-if [[ `echo ${rm}` -eq `echo ${ca}` ]];then 
-   echo "$(date "+[ %H:%M:%S ]")  精简的目录全部都不存在，停止脚本" && exit 1
-else 
-    echo "$rm"
-fi
-
 #输出路径到Magisk-Module的customize.sh
 mag=`while read route;do [[ -s "$PROJECT"'/system'$route ]] && echo $route | sed '/#/'d | sed '/^$/d' ;done < $SHELL_PATH/lin.prop`
 echo 'SKIPUNZIP=0
