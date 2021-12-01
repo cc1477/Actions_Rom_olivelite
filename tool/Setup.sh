@@ -8,6 +8,7 @@ sudo apt install curl -y
 sudo apt install rsync -y 
 sudo apt install zip -y 
 sudo apt install aria2 -y 
+sudo apt install python -y
 sudo apt install python3 -y
 sudo apt install brotli -y
 sudo apt install e2fsprogs -y 
