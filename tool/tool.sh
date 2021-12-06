@@ -72,8 +72,7 @@ e2fsck -fy $n/system.img > /dev/null 2>&1
 resize2fs -f $n/system.img 4096m > /dev/null 2>&1
 echo "$(date "+[ %H:%M:%S ]")  调整vendor大小"      
 e2fsck -fy $n/vendor.img > /dev/null 2>&1
-resize2fs -f $n/vendor.img 1024m
-exit 1
+resize2fs -f $n/vendor.img 1024m > /dev/null 2>&1
 #img转dat
 echo "$(date "+[ %H:%M:%S ]")  system.img转system.new.dat"
 $bin/rimg2sdat.py $n/system.img -o $n -v 4 > /dev/null 
