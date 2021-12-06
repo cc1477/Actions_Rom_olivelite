@@ -52,3 +52,16 @@
 /system/product/app/talkback
 #内容中心
 /system/priv-app/NewHome/NewHome.apk
+#vendor文件
+/vendor/app/Joyose
+/vendor/data-app
+/vendor/app/CACertService
+/vendor/app/CneApp
+/vendor/app/EidService
+/vendor/app/MiGameService
+/vendor/etc/spk_cal_pinknoise.wav
+/vendor/etc/spk_cal_silence.wav
+/vendor/etc/spk_cal_whitenoise.wav
+/vendor/etc/spk.wav
+/vendor/etc/test.wav
+/vendor/recovery-from-boot.p

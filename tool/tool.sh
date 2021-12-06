@@ -29,13 +29,6 @@ echo "$(date "+[ %H:%M:%S ]")  vendor.new.dat转vendor.img"
 $bin/sdat2img/sdat2img.py $n'/'vendor.transfer.list $n'/'vendor.new.dat $n'/'vendor.img > /dev/null && rm -rf $wk/$name/vendor.transfer.list && rm -rf $wk/$name/vendor.new.dat
 ssize=$(expr $(ls -al ${n}/system.img | awk '{print $5}') / 1024 / 1024 )
 vsize=$(expr $(ls -al ${n}/vendor.img | awk '{print $5}') / 1024 / 1024 )
-#调整img大小
-echo "$(date "+[ %H:%M:%S ]")  调整system大小"
-e2fsck -fy $n/system.img > /dev/null 2>&1
-resize2fs -f $n/system.img 4096m > /dev/null 2>&1
-echo "$(date "+[ %H:%M:%S ]")  调整vendor大小"      
-e2fsck -fy $n/vendor.img > /dev/null 2>&1
-resize2fs -f $n/vendor.img 1024m > /dev/null 2>&1
 #解img
 echo "$(date "+[ %H:%M:%S ]")  分解system.img" && python3 $bin/imgextractor/imgextractor.py $n/system.img $n > /dev/null && rm -rf ${n}/system.img
 echo "$(date "+[ %H:%M:%S ]")  分解vendor.img" && python3 $bin/imgextractor/imgextractor.py $n/vendor.img $n > /dev/null && rm -rf ${n}/vendor.img
@@ -70,9 +63,17 @@ $bin/mke2fs -L / -t ext4 -b 4096 $n/system.img ${size}M > /dev/null 2>&1
 $bin/e2fsdroid -e -T 0 -S $n/config/system_file_contexts -C $n/config/system_fs_config  -a /system -f $n/system $n/system.img > /dev/null && rm -rf $n/system
 echo "$(date "+[ %H:%M:%S ]")  合成vendor"
 ssize=$(cat ${n}/config/vendor_size.txt)
-size=1024
+size=$(expr $ssize / 1024 / 1024 )
 $bin/mke2fs -L / -t ext4 -b 4096 $n/vendor.img ${size}M > /dev/null 2>&1
 $bin/e2fsdroid -e -T 0 -S $n/config/vendor_file_contexts -C $n/config/vendor_fs_config  -a /vendor -f $n/vendor $n/vendor.img > /dev/null && rm -rf $n/vendor
+#调整img大小
+echo "$(date "+[ %H:%M:%S ]")  调整system大小"
+e2fsck -fy $n/system.img > /dev/null 2>&1
+resize2fs -f $n/system.img 4096m > /dev/null 2>&1
+echo "$(date "+[ %H:%M:%S ]")  调整vendor大小"      
+e2fsck -fy $n/vendor.img > /dev/null 2>&1
+resize2fs -f $n/vendor.img 1024m
+exit 1
 #img转dat
 echo "$(date "+[ %H:%M:%S ]")  system.img转system.new.dat"
 $bin/rimg2sdat.py $n/system.img -o $n -v 4 > /dev/null 
