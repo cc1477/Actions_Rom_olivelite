@@ -11,6 +11,7 @@ if [[ ! -s $M/Config.CFG ]];then
     exit 1
 fi
 Link=$(cat $M/Config.CFG | grep "Link=" | awk -F '=' '{print $2}')
+Linklite=$(cat $M/Config.CFG | grep "Linklite=" | awk -F '=' '{print $2}')
 Br=$(cat $M/Config.CFG | grep "Br=" | awk -F '=' '{print $2}')
 Upload=$(cat $M/Config.CFG | grep "Upload=" | awk -F '=' '{print $2}')
 #解包
@@ -52,7 +53,13 @@ if [[ -n $(ls $sub | grep -v log) ]];then
     fi
 fi
 #替换fw
-echo "$(date "+[ %H:%M:%S ]")  替换firmware-update" && rm -rf ${n}/firmware-update && mv ${M}/File/firmware-update $n
+echo "$(date "+[ %H:%M:%S ]")  替换firmware-update"
+if [[ -z $Linklite ]];then
+    rm -rf ${n}/firmware-update && mv ${M}/File/firmware-update $n
+else
+    unzip -j ${M}/Romlite.zip firmware-update -d $n
+fi
+
 #替换刷机脚本
 echo "$(date "+[ %H:%M:%S ]")  替换META-INF" && rm -rf $n/META-INF && mv ${M}/File/META-INF $n
 #打包system，vendor
