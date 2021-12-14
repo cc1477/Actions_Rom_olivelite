@@ -1,6 +1,6 @@
 #!/bin/bash
 Link=$(cat Config.CFG | grep "Link=" | awk -F '=' '{print $2}')
-Linklite=$(cat $M/Config.CFG | grep "Linklite=" | awk -F '=' '{print $2}')
+Linklite=$(cat Config.CFG | grep "Linklite=" | awk -F '=' '{print $2}')
 if [[ -z $Linklite ]];then
     echo "---未填写Rrdmi 8a下载链接，使用默认fw"
 else 
