@@ -108,7 +108,7 @@ cd $n && zip -q -r "$wk/Actions_Rom.zip" ./* && cd $M && rm -rf $n
 md5=$(md5sum $wk/Actions_Rom.zip | cut -c -10)
 dname=$(eval echo $(cat $M/Config.CFG | grep "name=" | awk -F '=' '{print $2}'))
 if [ -z $dname ];then
-    dname="QSclite-miui-$(echo $Link | sed 's/.zip//g' | awk -F '_' '{print $3}' )_${md5}_$(echo $Link | sed 's/.zip//g' | awk -F '_' '{print $5}' )"
+    dname="QSclite-miui-OLIVELITE-$(echo $Link | sed 's/.zip//g' | awk -F '_' '{print $3}' )_${md5}_$(echo $Link | sed 's/.zip//g' | awk -F '_' '{print $5}' )"
 fi
 export M bin wk sub name n Upload Br Link md5 dname
 echo "$(date "+[ %H:%M:%S ]")  打包名称:${dname}.zip"
