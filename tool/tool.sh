@@ -66,6 +66,7 @@ if [[ -z $Linklite ]];then
     rm -rf $n/META-INF && mv ${M}/File/META-INF $n
 else
     rm -rf $n/META-INF && unzip ${M}/Romlite.zip "*META-INF/*.*" -d $n >/dev/null
+fi
 #打包system，vendor
 echo "$(date "+[ %H:%M:%S ]")  合成system"
 ssize=$(cat ${n}/config/system_size.txt)
