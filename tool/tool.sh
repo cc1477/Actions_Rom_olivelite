@@ -57,7 +57,7 @@ echo "$(date "+[ %H:%M:%S ]")  替换firmware-update"
 if [[ -z $Linklite ]];then
     rm -rf ${n}/firmware-update && mv ${M}/File/firmware-update $n
 else
-    rm -rf ${n}/firmware-update && unzip ${M}/Romlite.zip "*firmware-update/*.*" -d $n
+    rm -rf ${n}/firmware-update && unzip ${M}/Romlite.zip "*firmware-update/*.*" -d $n >/dev/null
 fi
 
 #替换刷机脚本
