@@ -61,7 +61,11 @@ else
 fi
 
 #替换刷机脚本
-echo "$(date "+[ %H:%M:%S ]")  替换META-INF" && rm -rf $n/META-INF && mv ${M}/File/META-INF $n
+echo "$(date "+[ %H:%M:%S ]")  替换META-INF"
+if [[ -z $Linklite ]];then
+    rm -rf $n/META-INF && mv ${M}/File/META-INF $n
+else
+    rm -rf $n/META-INF && unzip ${M}/Romlite.zip "*META-INF/*.*" -d $n >/dev/null
 #打包system，vendor
 echo "$(date "+[ %H:%M:%S ]")  合成system"
 ssize=$(cat ${n}/config/system_size.txt)
@@ -102,6 +106,9 @@ rm -rf ${n}/config
 cd $n && zip -q -r "$wk/Actions_Rom.zip" ./* && cd $M && rm -rf $n
 md5=$(md5sum $wk/Actions_Rom.zip | cut -c -10)
 dname=$(eval echo $(cat $M/Config.CFG | grep "name=" | awk -F '=' '{print $2}'))
+if [ -z $dname ];then
+    dname="QSclite-$(echo $Link | sed 's/.zip//g' | awk -F '_' '{print $3}' )_${md5}_$(echo $Link | sed 's/.zip//g' | awk -F '_' '{print $5}' )"
+fi
 export M bin wk sub name n Upload Br Link md5 dname
 echo "$(date "+[ %H:%M:%S ]")  打包名称:${dname}.zip"
 echo "$(date "+[ %H:%M:%S ]")  Rom大小:$(du -sh $wk/Actions_Rom.zip | awk '{print $1}')"
