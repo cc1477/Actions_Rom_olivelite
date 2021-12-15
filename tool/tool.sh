@@ -65,7 +65,7 @@ echo "$(date "+[ %H:%M:%S ]")  替换META-INF"
 if [[ -z $Linklite ]];then
     rm -rf $n/META-INF && mv ${M}/File/META-INF $n
 else
-    rm -rf $n/META-INF && unzip ${M}/Romlite.zip "*META-INF/*.*" -d $n >/dev/null
+    rm -rf $n/META-INF && unzip -q ${M}/Romlite.zip -d $M/Romlite && mv ${M}/Romlite/META-INF $n
 fi
 #打包system，vendor
 echo "$(date "+[ %H:%M:%S ]")  合成system"
