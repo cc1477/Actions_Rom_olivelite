@@ -17,12 +17,12 @@ jobs:
        - name: Initializing the environment
          run: |
            cd $GITHUB_WORKSPACE/tool
-           sudo -s bash Setup.sh
+           sudo -s bash ./Script/Setup.sh
          
        - name: Download Rom
          run: |
            cd $GITHUB_WORKSPACE/tool
-           sudo -s bash Download.sh
+           sudo -s bash ./Script/Download.sh
          
        - name: Start working on Rom & Upload Rom
          run: |
