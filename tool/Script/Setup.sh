@@ -1,5 +1,5 @@
 #!/bin/bash
-M="$(echo $(cd $(dirname $0) && pwd ) | sed 's/Script//g')"
+M="$(echo $(cd $(dirname $0) && pwd ) | sed 's/Script\///g')"
 bin=$M/bin
 #初始化
 sudo apt update
