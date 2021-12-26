@@ -1,5 +1,5 @@
 #!/bin/bash
-M="$(echo $(cd $(dirname $0) && pwd ) | sed 's/Script//g')"
+M="$(echo $(cd $(dirname $0) && pwd ) | sed 's/\/Script//g')"
 Link=$(cat Config.CFG | grep "Link=" | awk -F '=' '{print $2}')
 Linklite=$(cat Config.CFG | grep "Linklite=" | awk -F '=' '{print $2}')
 if [[ -z $Linklite ]];then
