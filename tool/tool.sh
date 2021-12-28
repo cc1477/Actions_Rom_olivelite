@@ -21,9 +21,9 @@ bash ${M}/Script/unzip.sh
 
 #br转dat
 echo "$(date "+[ %H:%M:%S ]")  system.new.dat.br转system.new.dat"
-bash ${M}/Script/brdat-system.sh
+bash ${M}/Script/brdat/brdat-system.sh
 echo "$(date "+[ %H:%M:%S ]")  vendor.new.dat.br转vendor.new.dat"
-bash ${M}/Script/brdat-vendor.sh
+bash ${M}/Script/brdat/brdat-vendor.sh
 
 
 #dat转img
@@ -34,9 +34,9 @@ bash ${M}/Script/datimg/datimg-system.sh
 
 #解img
 echo "$(date "+[ %H:%M:%S ]")  分解system.img"
-bash ${M}/Script/img-system/img-system.sh
+bash ${M}/Script/img-system&vendor/img-system/img-system.sh
 echo "$(date "+[ %H:%M:%S ]")  分解vendor.img"
-bash ${M}/Script/img-vendor/img-vendor.sh
+bash ${M}/Script/img-system&vendor/img-vendor/img-vendor.sh
 
 #判断是否执行插件
 bash ${M}/Script/Sub.sh
@@ -67,15 +67,15 @@ bash ${M}/Script/Vendor-Size/Vendor-Size.sh
 
 #img转dat
 echo "$(date "+[ %H:%M:%S ]")  system.img转system.new.dat"
-bash ${M}/Script/imgdat-system.sh
+bash ${M}/Script/imgdat/imgdat-system.sh
 echo "$(date "+[ %H:%M:%S ]")  vendor.img转vendor.new.dat"
-bash ${M}/Script/imgdat-vendor.sh
+bash ${M}/Script/imgdat/imgdat-vendor.sh
 
 #dat转br
 echo "$(date "+[ %H:%M:%S ]")  system.new.dat转system.new.dat.br [br等级$Br]"
-bash ${M}/Script/datbr-system.sh
+bash ${M}/Script/datbr/datbr-system.sh
 echo "$(date "+[ %H:%M:%S ]")  vendor.new.dat转vendor.new.dat.br [br等级$Br]"
-bash ${M}/Script/datbr-vendor.sh
+bash ${M}/Script/datbr/datbr-vendor.sh
 
 #打包Rom
 echo "$(date "+[ %H:%M:%S ]")  打包Rom"
