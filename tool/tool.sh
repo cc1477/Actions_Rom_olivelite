@@ -34,9 +34,9 @@ bash ${M}/Script/datimg/datimg-vendor.sh
 
 #解img
 echo "$(date "+[ %H:%M:%S ]")  分解system.img"
-bash ${M}/Script/img-system&vendor/img-system/img-system.sh
+bash ${M}/Script/img-system&vendor/img-system.sh
 echo "$(date "+[ %H:%M:%S ]")  分解vendor.img"
-bash ${M}/Script/img-system&vendor/img-vendor/img-vendor.sh
+bash ${M}/Script/img-system&vendor/img-vendor.sh
 
 #判断是否执行插件
 bash ${M}/Script/Sub.sh
