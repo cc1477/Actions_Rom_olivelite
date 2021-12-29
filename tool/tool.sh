@@ -5,7 +5,6 @@ wk=$M/Work
 sub=$M/Sub
 name=$(zip=`find ${M}/*.zip` && zip=`echo ${zip##*/}` && echo ${zip%.zip*})
 n="${wk}/$name"
-export M bin wk sub name n
 if [[ ! -s $M/Config.CFG ]];then
     echo "Config.CFG不存在或大小为零"
     exit 1
@@ -14,7 +13,7 @@ Link=$(cat $M/Config.CFG | grep "Link=" | awk -F '=' '{print $2}')
 Linklite=$(cat $M/Config.CFG | grep "Linklite=" | awk -F '=' '{print $2}')
 Br=$(cat $M/Config.CFG | grep "Br=" | awk -F '=' '{print $2}')
 Upload=$(cat $M/Config.CFG | grep "Upload=" | awk -F '=' '{print $2}')
-export M bin wk sub name n Upload Br Link md5 dname
+export M bin wk sub name n Upload Br Link
 
 #解包
 echo "$(date "+[ %H:%M:%S ]")  解压Rom" 
@@ -80,9 +79,7 @@ bash ${M}/Script/datbr/datbr-vendor.sh
 
 #打包Rom
 echo "$(date "+[ %H:%M:%S ]")  打包Rom"
-bash ${M}/Script/zip.sh
-
-export M bin wk sub name n Upload Br Link md5 dname
+source ${M}/Script/zip.sh
 
 echo "$(date "+[ %H:%M:%S ]")  打包名称:${dname}.zip"
 echo "$(date "+[ %H:%M:%S ]")  Rom大小:$(du -sh $wk/Actions_Rom.zip | awk '{print $1}')"
