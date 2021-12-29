@@ -9,4 +9,3 @@ export md5 dname
 if [ -z $dname ];then
     dname="QSclite-miui-OLIVELITE-$(echo $Link | sed 's/.zip//g' | awk -F '_' '{print $3}' )_${md5}_$(echo $Link | sed 's/.zip//g' | awk -F '_' '{print $5}' )"
 fi
-exit 0
