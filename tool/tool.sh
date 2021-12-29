@@ -14,6 +14,7 @@ Link=$(cat $M/Config.CFG | grep "Link=" | awk -F '=' '{print $2}')
 Linklite=$(cat $M/Config.CFG | grep "Linklite=" | awk -F '=' '{print $2}')
 Br=$(cat $M/Config.CFG | grep "Br=" | awk -F '=' '{print $2}')
 Upload=$(cat $M/Config.CFG | grep "Upload=" | awk -F '=' '{print $2}')
+export M bin wk sub name n Upload Br Link md5 dname
 
 #解包
 echo "$(date "+[ %H:%M:%S ]")  解压Rom" 
