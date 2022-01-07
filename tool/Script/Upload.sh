@@ -10,10 +10,10 @@ if [[ ! -x $M/transfer ]];then
 fi
 #Rom
 echo "$(date "+[ %H:%M:%S ]")  将制作完成的Rom上传到$Upload"
-./transfer --no-progress $Upload $wk/${dname}.zip
+./transfer --no-progress $Upload $wk/${dname}.zip | grep -E "Download Link:|Local:" | eval "sed 's/^Local:/$(date "+[ %H:%M:%S ]")  文件名称:/g;s/^Download Link:/$(date "+[ %H:%M:%S ]")  下载链接:/g;s/[文件名称： ]\/.*\// /g'"
 #Recover
 echo "$(date "+[ %H:%M:%S ]")  将Magisk恢复模块上传到$Upload"
-./transfer --no-progress $Upload $wk/Magisk-Recover.zip
+./transfer --no-progress $Upload $wk/Magisk-Recover.zip | grep -E "Download Link:|Local:" | eval "sed 's/^Local:/$(date "+[ %H:%M:%S ]")  文件名称:/g;s/^Download Link:/$(date "+[ %H:%M:%S ]")  下载链接:/g;s/[文件名称： ]\/.*\// /g'"
 #log
 echo "$(date "+[ %H:%M:%S ]")  将插件执行过程上传到$Upload"
-./transfer --no-progress $Upload $wk/log*.zip
+./transfer --no-progress $Upload $wk/log*.zip | grep -E "Download Link:|Local:" | eval "sed 's/^Local:/$(date "+[ %H:%M:%S ]")  文件名称:/g;s/^Download Link:/$(date "+[ %H:%M:%S ]")  下载链接:/g;s/[文件名称： ]\/.*\// /g'"
