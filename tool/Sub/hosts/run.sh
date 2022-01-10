@@ -9,9 +9,14 @@ hosts="
 127.0.0.1 ad.mi.com
 127.0.0.1 ad.xiaomi.com
 127.0.0.1 ad1.xiaomi.com
-127.0.0.1 file.update.mi.com\n
+127.0.0.1 file.update.mi.com
 "
 
-for h in $hosts
-    echo -e "$h" >>$PROJECT/system/system/etc/hosts
+for h in "$hosts"
+do
+    echo -n "$(date "+[ %H:%M:%S ]")  以下为添加的hosts"
+    echo "$h"
+    echo "$h" >>$PROJECT/system/system/etc/hosts
 done
+
+exit 0
