@@ -12,6 +12,9 @@ sudo apt install python -y
 sudo apt install python3 -y
 sudo apt install brotli -y
 sudo apt install e2fsprogs -y 
+sudo apt install openjdk-11-jre -y
+sudo apt install android-sdk-libsparse-utils -y
+sudo apt install sed -y
 unzip -q ${M}/File/firmware-update.zip -d ${M}/File/
 unzip -q ${M}/File/camera.zip -d ${M}/File/
 mkdir $M/Work
