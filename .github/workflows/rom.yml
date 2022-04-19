@@ -28,4 +28,3 @@ jobs:
          run: |
            cd $GITHUB_WORKSPACE/tool
            sudo -s bash tool.sh
- 
