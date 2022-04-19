@@ -42,16 +42,16 @@ bash ${M}/Script/'img-system&vendor'/img-vendor.sh
 bash ${M}/Script/Sub.sh
 
 #替换fw
-echo "$(date "+[ %H:%M:%S ]")  替换firmware-update"
-bash ${M}/Script/firmware-update.sh
+# echo "$(date "+[ %H:%M:%S ]")  替换firmware-update"
+# bash ${M}/Script/firmware-update.sh
 
 #替换刷机脚本
-echo "$(date "+[ %H:%M:%S ]")  替换META-INF"
-bash ${M}/Script/META-INF.sh
+# echo "$(date "+[ %H:%M:%S ]")  替换META-INF"
+# bash ${M}/Script/META-INF.sh
 
 #替换相机配置
-echo "$(date "+[ %H:%M:%S ]")  替换替换相机配置"
-bash ${M}/Script/camera.sh
+# echo "$(date "+[ %H:%M:%S ]")  替换替换相机配置"
+# bash ${M}/Script/camera.sh
 
 #打包system，vendor
 echo "$(date "+[ %H:%M:%S ]")  合成system"
@@ -60,10 +60,10 @@ echo "$(date "+[ %H:%M:%S ]")  合成vendor"
 bash ${M}/Script/vendor-img/vendor-img.sh
 
 #调整img大小
-echo "$(date "+[ %H:%M:%S ]")  调整system大小"
-bash ${M}/Script/System-Size/System-Size.sh
-echo "$(date "+[ %H:%M:%S ]")  调整vendor大小"      
-bash ${M}/Script/Vendor-Size/Vendor-Size.sh
+# echo "$(date "+[ %H:%M:%S ]")  调整system大小"
+# bash ${M}/Script/System-Size/System-Size.sh
+# echo "$(date "+[ %H:%M:%S ]")  调整vendor大小"      
+# bash ${M}/Script/Vendor-Size/Vendor-Size.sh
 
 #img转dat
 echo "$(date "+[ %H:%M:%S ]")  system.img转system.new.dat"
