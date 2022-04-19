@@ -1,7 +1,7 @@
 #!/bin/bash
 M="$(echo $(cd $(dirname $0) && pwd ) | sed 's/\/Script//g')"
 Link=$(cat Config.CFG | grep "Link=" | awk -F '=' '{print $2}')
-Linklite=$(cat Config.CFG | greo -v '#' | grep "Linklite=" | awk -F '=' '{print $2}')
+Linklite=$(cat Config.CFG | grep -v '#' | grep "Linklite=" | awk -F '=' '{print $2}')
 if [[ -z $Linklite ]];then
     echo "---未填写Rrdmi 8a下载链接，使用默认fw"
 else 
