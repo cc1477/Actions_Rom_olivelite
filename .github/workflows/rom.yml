@@ -1,4 +1,4 @@
-name: Start-ROM
+name: Start-ROM-text
 on:
   watch:
     types: [started]
