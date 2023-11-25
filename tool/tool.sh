@@ -91,4 +91,5 @@ echo "$(date "+[ %H:%M:%S ]")  上传的网盘:$Upload"
 cd $M
 
 #上传
-bash ${M}/Script/Upload.sh
+echo "zipname=${dname}" >> $GITHUB_ENV
+#bash ${M}/Script/Upload.sh

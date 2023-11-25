@@ -30,3 +30,13 @@ jobs:
          run: |
            cd $GITHUB_WORKSPACE/tool
            sudo -s bash tool.sh
+
+       - name: Upload kernel to artifact
+         uses: actions/upload-artifact@v3
+         with:
+           name: ${{ env.zipname }} 
+           path: | 
+             work/${{ env.zipname }} 
+             work/Magisk-Recover.zip
+             work/log*.zip
+  
