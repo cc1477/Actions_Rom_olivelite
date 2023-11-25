@@ -31,7 +31,7 @@ jobs:
            cd $GITHUB_WORKSPACE/tool
            sudo -s bash tool.sh
 
-       - name: Upload kernel to artifact
+       - name: Upload Release
          uses: actions/upload-artifact@v3
          with:
            name: ${{ env.zipname }} 
