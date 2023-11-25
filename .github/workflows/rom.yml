@@ -1,7 +1,9 @@
-name: Start-ROM-text
+name: Start-ROM
 on:
-  watch:
-    types: [started]
+  push:
+    branches:
+      - master
+  workflow_dispatch:
     
 env: 
   TZ: Asia/Shanghai
